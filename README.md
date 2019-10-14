@@ -1,22 +1,20 @@
-An example Front-End app for managing relational data about employees and their roles.
+# react-redux-app
+
+An example Front-End app for managing relational data about employees and their roles. **(in development)**
 
 ## Technologies:
 
-#### Front-End UI:
+**Front-End UI:**
+- React
 
-React
+**State managment:**
+- Redux
 
-#### State managment:
+**Bundling:**
+- Webpack
 
-Redux
-
-#### Bundling:
-
-Webpack
-
-#### JS Transpiling
-
-Babel
+**JS Transpiling:**
+- Babel
 
 ## Usage:
 
