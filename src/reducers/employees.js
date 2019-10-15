@@ -9,6 +9,14 @@ const employees = (state = {}, action) => {
 					roles: [action.roles]
 				}
 			}
+		case 'REMOVE_EMPLOYEE':
+			const resultState = {}
+			for (let key in state) {
+				if (key !== action.id) {
+					resultState[key] = state[key]
+				}
+			}
+			return resultState
 		default:
 			return state
 	}

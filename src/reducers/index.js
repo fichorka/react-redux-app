@@ -8,9 +8,9 @@ export default (state = {}, action) => {
 	}
 }
 
-export const selectRole = (state, id) => fromRoles.selectRole(state, id)
+export const selectRole = (state, id) => fromRoles.selectRole(state, id) || {}
 
-export const selectEmployee = (state, id) => fromEmployees.selectEmployee(state, id)
+export const selectEmployee = (state, id) => fromEmployees.selectEmployee(state, id) || {}
 
 export const selectEmployeeRoles = (state, employeeId) => {
 	const employeeRoles = selectEmployee(state, employeeId).roles;

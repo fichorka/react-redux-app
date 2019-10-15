@@ -6,6 +6,7 @@ import LayoutGroup from './components/LayoutGroup'
 import { addEmployee, addRole } from './actions'
 import { TEMPLATES } from './constants'
 import { getAllEmployees, getAllRoles } from './reducers';
+import { removeRole, removeEmployee } from './actions'
 
 class App extends Component {
 	render() {
@@ -13,11 +14,11 @@ class App extends Component {
 			<Fragment>
 				<LayoutGroup title="Roles">
 					<AddRole actionCreator={addRole} />
-					<DataList name="roles" selector={getAllRoles} TEMPLATE={TEMPLATES.roles} />
+					<DataList name="roles" selector={getAllRoles} actionCreators={{ remove: removeRole }} TEMPLATE={TEMPLATES.roles} />
 				</LayoutGroup>
 				<LayoutGroup title="Employees">
 					<AddEmployee actionCreator={addEmployee} />
-					<DataList name="employees" selector={getAllEmployees} TEMPLATE={TEMPLATES.employees} />
+					<DataList name="employees" selector={getAllEmployees} actionCreators={{ remove: removeEmployee }} TEMPLATE={TEMPLATES.employees} />
 				</LayoutGroup>
 			</Fragment>
 		)

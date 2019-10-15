@@ -6,19 +6,21 @@ class BasicFormLayout extends Component {
 		return (
 			<form onSubmit={e => {
 				e.preventDefault();
-				const args = {};
+				const args = [];
 				let isFormValid = true;
 				TEMPLATE.forEach(cellTemplate => {
-					const { name } = cellTemplate
-					const value = e.target[name].value
-					if (!value.trim()) {
-						isFormValid = false;
+					if (cellTemplate.name !== 'actions') {
+						const { name } = cellTemplate
+						const value = e.target[name].value
+						if (!value.trim()) {
+							isFormValid = false;
+						}
+						args.push(value);
+						e.target[name].value = ''
 					}
-					args[name] = value;
-					e.target[name].value = ''
 				})
 				if (isFormValid) {
-					dispatch(actionCreator(args))
+					dispatch(actionCreator(...args))
 				}
 			}}>
 				{children}

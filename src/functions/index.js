@@ -2,7 +2,7 @@ import React from 'react'
 import ListRow from '../components/ListRow'
 import ListHeader from '../components/ListHeader'
 
-export const generateListItems = (table, TEMPLATE, name) => {
+export const generateListItems = (table, TEMPLATE, name, actionCreators, dispatch) => {
 
 	if (!table.length) {
 		return <span className="list-status list-field">The list is empty</span>
@@ -17,12 +17,22 @@ export const generateListItems = (table, TEMPLATE, name) => {
 
 	//List:
 	listRows.push(
-		...table.map((row, index) => (
-			<ListRow row={row} TEMPLATE={TEMPLATE} key={`list-row-${name}-${index}`} />
-		))
+		...table.map((row, index) => {
+			const actions = {}
+			TEMPLATE.forEach(t => {
+				if (t.name === 'actions') {
+					t.actions.forEach(a => {
+						actions[a.name] = () => dispatch(actionCreators[a.name](row.id))
+					})
+				}
+			})
+			return (
+				<ListRow row={row} actions={actions} TEMPLATE={TEMPLATE} key={`list-row-${name}-${index}`} />
+			)
+		})
 	)
 
-	return <ul className="list">{listRows}</ul>
+	return <ul className="list container">{listRows}</ul>
 }
 
 export const generateOptionItems = (table, labelKey = 'name') => {

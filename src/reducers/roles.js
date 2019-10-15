@@ -8,6 +8,14 @@ const roles = (state = {}, action) => {
 					name: action.name
 				}
 			}
+		case 'REMOVE_ROLE':
+			const resultState = {}
+			for (let key in state) {
+				if (key !== action.id) {
+					resultState[key] = state[key]
+				}
+			}
+			return resultState
 		default:
 			return state
 	}
