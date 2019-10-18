@@ -105,8 +105,10 @@ body {
 .list.status {
 	display: block;
 	text-align: center;
+	line-height: 2em;
+	height: 2em;
 	margin: 25px auto 0;
-	background: #ccc;
+	background: #eee;
 	border-radius: 0.5em;
 }
 
