@@ -5,7 +5,7 @@ import ListHeader from '../components/ListHeader'
 export const generateListItems = (table, TEMPLATE, name, actionCreators, dispatch) => {
 
 	if (!table.length) {
-		return <span className="list status row">The list is empty</span>
+		return <span className="list-status list-field">The list is empty</span>
 	}
 
 	const listRows = []

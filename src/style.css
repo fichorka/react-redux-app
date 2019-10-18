@@ -106,9 +106,7 @@ body {
 	display: block;
 	text-align: center;
 	margin: 25px auto 0;
-	background: #eee;
-	line-height:2em;
-	height: 2em;
+	background: #ccc;
 	border-radius: 0.5em;
 }
 
