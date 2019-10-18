@@ -1,5 +1,4 @@
 body {
-	margin: 10px;
 	font: 16px "arial", sans-serif;
 	background: #bbb;
 	min-width: 250px;
@@ -8,6 +7,33 @@ body {
 * {
 	margin: 0;
 }
+
+/* Component: Navbar */
+.navbar {
+	display: block;
+	background: #eee;
+}
+
+.navbar a {
+	font-weight: bold;
+	color: #111;
+	display: inline-block;
+	line-height: 3em;
+	padding: 0 1em;
+	text-decoration: none;
+}
+
+.navbar a:hover {
+	background: #111;
+	color: #eee;
+}
+
+
+/* main container element */
+.container.main {
+	margin: 10px
+}
+
 
 /* Component: LayoutGroupCointainer */
 .group-container {

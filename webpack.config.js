@@ -10,6 +10,7 @@ module.exports = {
 		filename: 'main.js'
 	},
 	devServer: {
+		historyApiFallback: true,
 		contentBase: './dist',
 	},
 	watch: true,
