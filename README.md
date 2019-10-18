@@ -1,6 +1,6 @@
 # react-redux-app
 
-An example Front-End app for managing relational data about employees and their roles. **(in development)**
+An example Front-End single page app for managing relational data about employees and their roles. **(in development)**
 
 ## Technologies:
 
@@ -9,6 +9,9 @@ An example Front-End app for managing relational data about employees and their 
 
 **State managment:**
 - Redux
+
+**Routing**
+- React Router
 
 **Bundling:**
 - Webpack
@@ -20,6 +23,4 @@ An example Front-End app for managing relational data about employees and their 
 
 1. `npm install`
 
-2. `npm run build` or `npx webpack`
-
-3. open dist/index.html
+2. `npm start` or `npm run start` to start development server with live reloading.
