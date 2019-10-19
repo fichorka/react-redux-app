@@ -1,13 +1,12 @@
 import React, { Component, Fragment } from 'react';
-import AddRole from './containers/AddRole'
+import RoleForm from './containers/RoleForm'
 import DataList from './containers/DataList'
-import AddEmployee from './containers/AddEmployee'
+import EmployeeForm from './containers/EmployeeForm'
 import LayoutGroup from './components/LayoutGroup'
-import { addEmployee, addRole } from './actions'
 import { TEMPLATES } from './constants'
 import { getAllEmployees, getAllRoles } from './reducers';
 import { removeRole, removeEmployee } from './actions'
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Navbar from './components/Navbar';
 
 class App extends Component {
@@ -17,7 +16,7 @@ class App extends Component {
 				<Router>
 
 					<Navbar />
-					<main class="container main">
+					<main className="container main">
 						<Switch>
 
 							<Route exact path="/" render={() => (
@@ -26,14 +25,14 @@ class App extends Component {
 
 							<Route path="/roles" render={() => (
 								<LayoutGroup title="Roles">
-									<AddRole actionCreator={addRole} />
+									<RoleForm />
 									<DataList name="roles" selector={getAllRoles} actionCreators={{ remove: removeRole }} TEMPLATE={TEMPLATES.roles} />
 								</LayoutGroup>
 							)} />
 
 							<Route path="/employees" render={() => (
 								<LayoutGroup title="Employees">
-									<AddEmployee actionCreator={addEmployee} />
+									<EmployeeForm />
 									<DataList name="employees" selector={getAllEmployees} actionCreators={{ remove: removeEmployee }} TEMPLATE={TEMPLATES.employees} />
 								</LayoutGroup>
 							)} />

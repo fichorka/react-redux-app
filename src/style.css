@@ -139,11 +139,23 @@ body {
 }
 
 /* input elements */
-.form-input {
-	display: block;
-	margin: 0.7em 0 1.5em;
+.form.input {
+	display: inline-block;
+	font-size: 1em;
+	margin: 0.6em 0 1.5em;
 }
 
-.form-input-label {
+.form.input-label {
+	display: block;
 	font-weight: bold
+}
+
+.form.submit-button {
+	display: block
+}
+
+.form.input-error {
+	display: inline-block;
+	margin: 0 1em;
+	color: #b33
 }
