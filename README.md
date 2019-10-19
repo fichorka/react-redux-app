@@ -4,20 +4,23 @@ An example Front-End single page app for managing relational data about employee
 
 ## Technologies:
 
-**Front-End UI:**
+**Front-End UI**
 - React
 
-**State managment:**
+**State managment**
 - Redux
 
 **Routing**
 - React Router
 
-**Bundling:**
+**Bundling**
 - Webpack
 
-**JS Transpiling:**
+**JS Transpiling**
 - Babel
+
+**3rd Party Components**
+- Formik
 
 ## Usage:
 
