@@ -1,6 +1,8 @@
 import employees, * as fromEmployees from './employees'
 import roles, * as fromRoles from './roles'
 
+
+//root reducer
 export default (state = {}, action) => {
 	return {
 		employees: employees(state.employees, action),
@@ -8,6 +10,8 @@ export default (state = {}, action) => {
 	}
 }
 
+
+//selectors
 export const selectRole = (state, id) => fromRoles.selectRole(state, id) || {}
 
 export const selectEmployee = (state, id) => fromEmployees.selectEmployee(state, id) || {}
@@ -30,9 +34,5 @@ export const getAllEmployees = state => {
 }
 
 export const getAllRoles = state => {
-	const result = []
-	for (let key in state.roles) {
-		result.push(state.roles[key]);
-	}
-	return result
+	return Object.values(state.roles)
 }
