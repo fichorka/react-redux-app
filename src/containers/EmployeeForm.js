@@ -47,10 +47,12 @@ class EmployeeForm extends Component {
 						<label htmlFor="name" className="form input-label">Employee Name</label>
 						<Field type="text" name="name" size="20" className="form input" />
 						<ErrorMessage name="name" render={msg => <span className="form input-error">{msg}</span>} />
-						
-						<button type="submit" className="form submit-button" disabled={isSubmitting}>
-							Add Employee
+
+						<div>
+							<button type="submit" className="form button" disabled={isSubmitting}>
+								Add Employee
           </button>
+						</div>
 					</Form>
 				)}
 			</Formik>
