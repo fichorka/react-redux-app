@@ -8,6 +8,10 @@ const roles = (state = {}, action) => {
 					name: action.name
 				}
 			}
+		case 'UPDATE_ROLE': {
+			state[action.id] = { id: action.id, name: action.name }
+			return state
+		}
 		case 'REMOVE_ROLE':
 			const resultState = {}
 			for (let key in state) {

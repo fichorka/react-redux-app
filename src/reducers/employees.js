@@ -6,9 +6,13 @@ const employees = (state = {}, action) => {
 				[action.id]: {
 					id: action.id,
 					name: action.name,
-					roles: [action.roles]
+					roles: action.roles
 				}
 			}
+		case 'UPDATE_EMPLOYEE': {
+			state[action.id] = { id: action.id, name: action.name, roles: action.roles }
+			return state
+		}
 		case 'REMOVE_EMPLOYEE':
 			const resultState = {}
 			for (let key in state) {

@@ -17,17 +17,15 @@ export const selectRole = (state, id) => fromRoles.selectRole(state, id) || {}
 export const selectEmployee = (state, id) => fromEmployees.selectEmployee(state, id) || {}
 
 export const selectEmployeeRoles = (state, employeeId) => {
-	const employeeRoles = selectEmployee(state, employeeId).roles;
-	return employeeRoles.map(roleId => {
-		return selectRole(state, state.roles[roleId]);
-	});
+	const employeeRoleId = selectEmployee(state, employeeId).roles
+	return selectRole(state, state.roles[employeeRoleId])
 }
 
 export const getAllEmployees = state => {
 	const result = [];
 	for (let key in state.employees) {
 		let employee = state.employees[key];
-		const roles = employee.roles.map(roleId => (selectRole(state, roleId).name)).join(', ')
+		const roles = selectRole(state, employee.roles).name
 		result.push({ ...employee, roles });
 	}
 	return result

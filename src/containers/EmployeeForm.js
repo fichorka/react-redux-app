@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
-import { addEmployee } from '../actions'
+import { addEmployee, updateEmployee } from '../actions'
 import { connect } from 'react-redux'
 import { generateOptionItems } from '../functions'
 import { getAllRoles } from '../reducers'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { selectEmployee } from '../reducers/employees';
 
 class EmployeeForm extends Component {
 	render() {
-		const { dispatch, roles } = this.props
-		const action = addEmployee
+		const { dispatch, roles, editItem, history  } = this.props
+		const action = editItem ? updateEmployee : addEmployee
+		let nameValue = editItem ? editItem.name : ''
+		let rolesValue = editItem ? editItem.roles : ''
+		let vals = { name: editItem ? editItem.name : '', roles: editItem ? editItem.roles : '' }
 		return (
 			<Formik
-				initialValues={{ name: '', roles: '' }}
+				initialValues={vals}
 				validate={values => {
 					let errors = {};
 					if (!values.name) {
@@ -22,10 +26,11 @@ class EmployeeForm extends Component {
 					return errors;
 				}}
 				onSubmit={(values, { setSubmitting }) => {
-					dispatch(action(values.name, values.roles))
+					editItem ? dispatch(action(editItem.id, values.name, values.roles)) : dispatch(action(values.name, values.roles))
 					values.name = ''
 					values.roles = ''
 					setSubmitting(false)
+					editItem ? history.push('/employees') : null
 				}}
 			>
 				{({ isSubmitting, values, handleChange, handleBlur }) => (
@@ -60,9 +65,15 @@ class EmployeeForm extends Component {
 	}
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+	let editItem = null
+	if (ownProps.id) {
+		editItem = selectEmployee(state, ownProps.id)
+	}
 	return {
-		roles: getAllRoles(state)
+		roles: getAllRoles(state),
+		editItem,
+		history: ownProps.history
 	}
 }
 

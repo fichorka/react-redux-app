@@ -11,6 +11,14 @@ export const addRole = (name) => (
 	}
 )
 
+export const updateRole = (id, name) => {
+	return {
+		type: 'UPDATE_ROLE',
+		id,
+		name
+	}
+}
+
 export const removeRole = (id) => (
 	{
 		type: "REMOVE_ROLE",
@@ -26,6 +34,15 @@ export const addEmployee = (name, roles) => (
 		roles
 	}
 )
+
+export const updateEmployee = (id, name, roles) => {
+	return {
+		type: 'UPDATE_EMPLOYEE',
+		id,
+		name,
+		roles
+	}
+}
 
 export const removeEmployee = (id) => (
 	{

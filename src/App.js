@@ -8,6 +8,8 @@ import { getAllEmployees, getAllRoles } from './reducers';
 import { removeRole, removeEmployee } from './actions'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Navbar from './components/Navbar';
+import Roles from './pages/Roles';
+import Employees from './pages/Employees';
 
 class App extends Component {
 	render() {
@@ -23,18 +25,20 @@ class App extends Component {
 								<h1>Home</h1>
 							)} />
 
-							<Route path="/roles" render={() => (
-								<LayoutGroup title="Roles">
-									<RoleForm />
-									<DataList name="roles" selector={getAllRoles} actionCreators={{ remove: removeRole }} TEMPLATE={TEMPLATES.roles} />
-								</LayoutGroup>
+							<Route path="/roles" render={({match, history}) => (
+								<Roles match={match} history={history} />
+								// <LayoutGroup title="Roles">
+								// 	<RoleForm />
+								// 	<DataList name="roles" selector={getAllRoles} actionCreators={{ remove: removeRole }} TEMPLATE={TEMPLATES.roles} />
+								// </LayoutGroup>
 							)} />
 
-							<Route path="/employees" render={() => (
-								<LayoutGroup title="Employees">
-									<EmployeeForm />
-									<DataList name="employees" selector={getAllEmployees} actionCreators={{ remove: removeEmployee }} TEMPLATE={TEMPLATES.employees} />
-								</LayoutGroup>
+							<Route path="/employees" render={({match, history}) => (
+								<Employees match={match} history={history} />
+								// <LayoutGroup title="Employees">
+								// 	<EmployeeForm />
+								// 	<DataList name="employees" selector={getAllEmployees} actionCreators={{ remove: removeEmployee }} TEMPLATE={TEMPLATES.employees} />
+								// </LayoutGroup>
 							)} />
 
 						</Switch>

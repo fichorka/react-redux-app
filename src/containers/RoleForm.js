@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { addRole } from '../actions'
+import { addRole, updateRole } from '../actions'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { selectRole } from '../reducers'
 
 class RoleForm extends Component {
 	render() {
-		const { dispatch } = this.props;
-		const action = addRole
+		const { dispatch, editItem, history } = this.props;
+		const action = editItem ? updateRole : addRole
+		let nameValue = editItem ? editItem.name : ''
 		return (
 			<Formik
-				initialValues={{ name: '' }}
+				initialValues={{ name: nameValue }}
 				validate={values => {
 					let errors = {};
 					if (!values.name) {
@@ -18,14 +20,14 @@ class RoleForm extends Component {
 					return errors;
 				}}
 				onSubmit={(values, { setSubmitting }) => {
-					dispatch(action(values.name))
+					editItem ? dispatch(action(editItem.id, values.name)) : dispatch(action(values.name))
 					values.name = ''
 					setSubmitting(false)
+					editItem ? history.push('/roles') : null
 				}}
 			>
 				{({ isSubmitting }) => (
 					<Form>
-
 						<label htmlFor="name" className="form input-label">Role Name</label>
 						<Field type="text" name="name" size="15" className="form input" />
 						<ErrorMessage name="name" render={msg => <span className="form input-error">{msg}</span>} />
@@ -43,4 +45,15 @@ class RoleForm extends Component {
 	}
 }
 
-export default connect()(RoleForm)
+const mapStateToProps = (state, ownProps) => {
+	let editItem = null
+	if (ownProps.id) {
+		editItem = selectRole(state, ownProps.id)
+	}
+	return {
+		editItem,
+		history: ownProps.history
+	}
+}
+
+export default connect(mapStateToProps)(RoleForm)

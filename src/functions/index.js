@@ -27,7 +27,7 @@ export const generateListItems = (table, TEMPLATE, name, actionCreators, dispatc
 				}
 			})
 			return (
-				<ListRow row={row} actions={actions} TEMPLATE={TEMPLATE} key={`list-row-${name}-${index}`} />
+				<ListRow row={row} name={name} actions={actions} TEMPLATE={TEMPLATE} key={`list-row-${name}-${index}`} />
 			)
 		})
 	)
