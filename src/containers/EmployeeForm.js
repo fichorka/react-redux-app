@@ -7,15 +7,21 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { selectEmployee } from '../reducers/employees';
 
 class EmployeeForm extends Component {
+	constructor(props) {
+		super(props)
+		this.goBack = this.goBack.bind(this)
+	}
+	goBack() {
+		this.props.history.goBack()
+	}
+
 	render() {
-		const { dispatch, roles, editItem, history  } = this.props
+		const { dispatch, roles, editItem, history } = this.props
 		const action = editItem ? updateEmployee : addEmployee
-		let nameValue = editItem ? editItem.name : ''
-		let rolesValue = editItem ? editItem.roles : ''
-		let vals = { name: editItem ? editItem.name : '', roles: editItem ? editItem.roles : '' }
+		let initialValues = { name: editItem ? editItem.name : '', roles: editItem ? editItem.roles : '' }
 		return (
 			<Formik
-				initialValues={vals}
+				initialValues={initialValues}
 				validate={values => {
 					let errors = {};
 					if (!values.name) {
@@ -56,7 +62,13 @@ class EmployeeForm extends Component {
 						<div>
 							<button type="submit" className="form button" disabled={isSubmitting}>
 								Add Employee
-          </button>
+          		</button>
+							<button type="reset" className="form button">Reset</button>
+							{
+								editItem ?
+									<button type="button" onClick={this.goBack} className="form button">Cancel</button> :
+									null
+							}
 						</div>
 					</Form>
 				)}

@@ -25,20 +25,12 @@ class App extends Component {
 								<h1>Home</h1>
 							)} />
 
-							<Route path="/roles" render={({match, history}) => (
+							<Route path="/roles" render={({ match, history }) => (
 								<Roles match={match} history={history} />
-								// <LayoutGroup title="Roles">
-								// 	<RoleForm />
-								// 	<DataList name="roles" selector={getAllRoles} actionCreators={{ remove: removeRole }} TEMPLATE={TEMPLATES.roles} />
-								// </LayoutGroup>
 							)} />
 
-							<Route path="/employees" render={({match, history}) => (
+							<Route path="/employees" render={({ match, history }) => (
 								<Employees match={match} history={history} />
-								// <LayoutGroup title="Employees">
-								// 	<EmployeeForm />
-								// 	<DataList name="employees" selector={getAllEmployees} actionCreators={{ remove: removeEmployee }} TEMPLATE={TEMPLATES.employees} />
-								// </LayoutGroup>
 							)} />
 
 						</Switch>

@@ -2,7 +2,7 @@ import React from 'react'
 import ListRow from '../components/ListRow'
 import ListHeader from '../components/ListHeader'
 
-export const generateListItems = (table, TEMPLATE, name, actionCreators, dispatch) => {
+export const generateListItems = (table, TEMPLATE, name, removeAction) => {
 
 	if (!table.length) {
 		return <span className="list status">The list is empty</span>
@@ -10,24 +10,16 @@ export const generateListItems = (table, TEMPLATE, name, actionCreators, dispatc
 
 	const listRows = []
 
-	//List Header:
+	//list header:
 	listRows.push(
 		<ListHeader TEMPLATE={TEMPLATE} name={name} key={`list-header-${name}`} />
 	)
 
-	//List:
+	//list data rows:
 	listRows.push(
 		...table.map((row, index) => {
-			const actions = {}
-			TEMPLATE.forEach(t => {
-				if (t.name === 'actions') {
-					t.actions.forEach(a => {
-						actions[a.name] = () => dispatch(actionCreators[a.name](row.id))
-					})
-				}
-			})
 			return (
-				<ListRow row={row} name={name} actions={actions} TEMPLATE={TEMPLATE} key={`list-row-${name}-${index}`} />
+				<ListRow row={row} name={name} removeAction={removeAction} TEMPLATE={TEMPLATE} key={`list-row-${name}-${index}`} />
 			)
 		})
 	)

@@ -5,13 +5,20 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { selectRole } from '../reducers'
 
 class RoleForm extends Component {
+	constructor(props) {
+		super(props)
+		this.goBack = this.goBack.bind(this)
+	}
+	goBack() {
+		this.props.history.goBack()
+	}
 	render() {
 		const { dispatch, editItem, history } = this.props;
 		const action = editItem ? updateRole : addRole
-		let nameValue = editItem ? editItem.name : ''
+		let initialValues = { name: editItem ? editItem.name : '' }
 		return (
 			<Formik
-				initialValues={{ name: nameValue }}
+				initialValues={initialValues}
 				validate={values => {
 					let errors = {};
 					if (!values.name) {
@@ -35,7 +42,13 @@ class RoleForm extends Component {
 						<div>
 							<button type="submit" className="form button" disabled={isSubmitting}>
 								Add Role
-          </button>
+          		</button>
+							<button type="reset" className="form button">Reset</button>
+							{
+								editItem ?
+									<button type="button" onClick={this.goBack} className="form button">Cancel</button> :
+									null
+							}
 						</div>
 
 					</Form>

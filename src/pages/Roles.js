@@ -24,7 +24,7 @@ class Roles extends Component {
 					<Route exact path={`${match.path}/`} render={() => (
 						<LayoutGroup title="Roles">
 							<RoleForm key="add"/>
-							<DataList name="roles" selector={getAllRoles} actionCreators={{ remove: removeRole, update: updateRole }} TEMPLATE={TEMPLATES.roles} />
+							<DataList name="roles" selector={getAllRoles} actions={{ remove: removeRole }} TEMPLATE={TEMPLATES.roles} />
 						</LayoutGroup>
 					)} />
 

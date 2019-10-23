@@ -4,13 +4,13 @@ import DataCell from './DataCell';
 
 class ListRow extends Component {
 	render() {
-		const { row, TEMPLATE, actions, name } = this.props;
+		const { row, TEMPLATE, removeAction, name } = this.props;
 		let items = []
 		return (
 			<li className="list row" key={row.id}>
 				{TEMPLATE.map(cellTemplate => {
 					if (cellTemplate.name === 'actions') {
-						items.push(<ActionSet name={name} key={row.id + cellTemplate.name} actionsTemplate={cellTemplate} row={row} actions={actions} />)
+						items.push(<ActionSet name={name} key={row.id + cellTemplate.name} actionsTemplate={cellTemplate} row={row} removeAction={removeAction} />)
 					} else {
 						items.push(<DataCell key={row.id + cellTemplate.name} cellTemplate={cellTemplate} row={row} />)
 					}

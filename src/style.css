@@ -153,10 +153,12 @@ body {
 .form.button {
 	border: none;
 	background: #ddd;
+	font-size: 0.8em;
 	color: #111;
 	border-radius: 0.2em;
 	padding: 0.5em 0.7em;
 	display: inline-block;
+	margin-right: 1.5em;
 }
 
 .form.button:hover {
@@ -167,5 +169,5 @@ body {
 .form.input-error {
 	display: inline-block;
 	margin: 0 1em;
-	color: #b33
+	color: #b33;
 }

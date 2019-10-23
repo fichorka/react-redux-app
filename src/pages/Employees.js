@@ -25,7 +25,7 @@ class Employees extends Component {
 					<Route exact path={`${match.path}/`} render={() => (
 						<LayoutGroup title="Employees">
 							<EmployeeForm key="add"/>
-							<DataList name="employees" selector={getAllEmployees} actionCreators={{ remove: removeEmployee, update: updateEmployee }} TEMPLATE={TEMPLATES.employees} />
+							<DataList name="employees" selector={getAllEmployees} actions={{ remove: removeEmployee }} TEMPLATE={TEMPLATES.employees} />
 						</LayoutGroup>
 					)} />
 
