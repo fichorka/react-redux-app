@@ -1,11 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import RoleForm from './containers/RoleForm'
-import DataList from './containers/DataList'
-import EmployeeForm from './containers/EmployeeForm'
-import LayoutGroup from './components/LayoutGroup'
-import { TEMPLATES } from './constants'
-import { getAllEmployees, getAllRoles } from './reducers';
-import { removeRole, removeEmployee } from './actions'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Navbar from './components/Navbar';
 import Roles from './pages/Roles';

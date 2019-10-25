@@ -1,12 +1,10 @@
 import React, { Component, Fragment } from 'react'
-import { Route, Switch, Link } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import { getAllEmployees } from '../reducers';
-import { removeEmployee, updateEmployee } from '../actions'
+import { removeEmployee } from '../actions'
 import { TEMPLATES } from '../constants'
 import DataList from '../containers/DataList'
-import RoleForm from '../containers/RoleForm'
 import LayoutGroup from '../components/LayoutGroup'
-import { Redirect } from 'react-router-dom'
 import EmployeeForm from '../containers/EmployeeForm';
 
 class Employees extends Component {

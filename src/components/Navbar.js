@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 class Navbar extends Component {
 	render() {
 		return (
 			<nav className="navbar">
-				<Link to="/" >Home</Link>
-				<Link to="/roles" >Roles</Link>
-				<Link to="/employees" >Employees</Link>
+				<NavLink exact to="/" activeClassName="active" >Home</NavLink>
+				<NavLink to="/roles" activeClassName="active" >Roles</NavLink>
+				<NavLink to="/employees" activeClassName="active" >Employees</NavLink>
 			</nav>
 		)
 	}

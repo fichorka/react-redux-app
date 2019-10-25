@@ -1,12 +1,11 @@
 import React, { Component, Fragment } from 'react'
-import { Route, Switch, Link } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import { getAllRoles } from '../reducers';
-import { removeRole, updateRole } from '../actions'
+import { removeRole } from '../actions'
 import { TEMPLATES } from '../constants'
 import DataList from '../containers/DataList'
 import RoleForm from '../containers/RoleForm'
 import LayoutGroup from '../components/LayoutGroup'
-import { Redirect } from 'react-router-dom'
 
 class Roles extends Component {
 	
