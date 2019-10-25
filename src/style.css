@@ -172,8 +172,8 @@ body {
 	color: #111;
 	border-radius: 0.2em;
 	padding: 0.5em 0.7em;
-	display: inline-block;
-	margin-right: 1.5em;
+	display: block;
+	margin: 1em 1.5em 0 0;
 }
 
 .form.button:hover {
@@ -188,8 +188,14 @@ body {
 }
 
 /*media queries*/
-@media only screen and (min-width: 300px) {
+@media only screen and (min-width: 500px) {
 	.navbar a {
 		display:inline-block;
 	}
+
+	.form.button {
+		display: inline-block;
+		margin-top: 0
+	}
 }
+
