@@ -8,28 +8,39 @@ body {
 	margin: 0;
 }
 
+.page.heading {
+	text-align: center;
+	font-size: 2em;
+	padding: 0.5em 0;
+}
+
 /* Component: Navbar */
 .navbar {
 	display: block;
-	background: #eee;
+	background: #ddd;
 }
 
 .navbar a {
 	font-weight: bold;
+	text-align: center;
 	color: #111;
-	display: inline-block;
+	display: block;
 	line-height: 3em;
 	padding: 0 1em;
 	text-decoration: none;
+	letter-spacing: 0.07em;
 }
 
 .navbar a.active {
-	background: #bbb
+	background: #eee
+}
+
+.navbar a.active:last-of-type {
+	/* border-bottom: 0.1em solid #fff; */
 }
 
 .navbar a:hover {
-	background: #111;
-	color: #eee;
+	background: #fff;
 }
 
 
@@ -174,4 +185,11 @@ body {
 	display: inline-block;
 	margin: 0 1em;
 	color: #b33;
+}
+
+/*media queries*/
+@media only screen and (min-width: 300px) {
+	.navbar a {
+		display:inline-block;
+	}
 }

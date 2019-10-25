@@ -15,7 +15,7 @@ class App extends Component {
 						<Switch>
 
 							<Route exact path="/" render={() => (
-								<h1>Home</h1>
+								<h1 className="page heading" >Home</h1>
 							)} />
 
 							<Route path="/roles" render={({ match, history }) => (
@@ -24,6 +24,10 @@ class App extends Component {
 
 							<Route path="/employees" render={({ match, history }) => (
 								<Employees match={match} history={history} />
+							)} />
+
+							<Route path="*" render={({match}) => (
+								<h1 className="page heading" >url {match.url} does not match</h1>
 							)} />
 
 						</Switch>
