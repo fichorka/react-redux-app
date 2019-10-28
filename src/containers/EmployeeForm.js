@@ -40,33 +40,33 @@ class EmployeeForm extends Component {
 				}}
 			>
 				{({ isSubmitting, values, handleChange, handleBlur }) => (
-					<Form>
+					<Form className="form" >
 
-						<label htmlFor="roles" className="form input-label">Select Role</label>
+						<label htmlFor="roles" className="input-label">Select Role</label>
 						<select
 							name="roles"
 							value={values.roles}
 							onChange={handleChange}
 							onBlur={handleBlur}
-							className="form input"
+							className="input"
 						>
 							<option value="">Select Role</option>
 							{generateOptionItems(roles)}
 						</select>
-						<ErrorMessage name="roles" render={msg => <span className="form input-error">{msg}</span>} />
+						<ErrorMessage name="roles" render={msg => <span className="input-error">{msg}</span>} />
 
-						<label htmlFor="name" className="form input-label">Employee Name</label>
-						<Field type="text" name="name" size="20" className="form input" />
-						<ErrorMessage name="name" render={msg => <span className="form input-error">{msg}</span>} />
+						<label htmlFor="name" className="input-label">Employee Name</label>
+						<Field type="text" name="name" size="20" className="input" />
+						<ErrorMessage name="name" render={msg => <span className="input-error">{msg}</span>} />
 
 						<div>
-							<button type="submit" className="form button" disabled={isSubmitting}>
+							<button type="submit" className="button" disabled={isSubmitting}>
 								Add Employee
           		</button>
-							<button type="reset" className="form button">Reset</button>
+							<button type="reset" className="button">Reset</button>
 							{
 								editItem ?
-									<button type="button" onClick={this.goBack} className="form button">Cancel</button> :
+									<button type="button" onClick={this.goBack} className="button">Cancel</button> :
 									null
 							}
 						</div>

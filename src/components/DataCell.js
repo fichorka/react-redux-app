@@ -5,7 +5,7 @@ class DataCell extends Component {
 		const { cellTemplate, row } = this.props
 		return (
 			<span
-				className="list data-cell"
+				className="data-cell"
 				style={{ width: cellTemplate.width }}
 			>
 				{row[cellTemplate.name] || '\u00A0'}

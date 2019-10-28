@@ -7,7 +7,7 @@ class ListRow extends Component {
 		const { row, TEMPLATE, removeAction, name } = this.props;
 		let items = []
 		return (
-			<li className="list row" key={row.id}>
+			<li className="row" key={row.id}>
 				{TEMPLATE.map(cellTemplate => {
 					if (cellTemplate.name === 'actions') {
 						items.push(<ActionSet name={name} key={row.id + cellTemplate.name} actionsTemplate={cellTemplate} row={row} removeAction={removeAction} />)

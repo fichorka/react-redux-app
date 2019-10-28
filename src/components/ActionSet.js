@@ -7,21 +7,21 @@ class ActionSet extends Component {
 		const actionFields = [
 			<Link
 				key={`update${row.id}`}
-				className="list action-cell"
+				className="action-cell"
 				to={`${name}/${row.id}`}
 			>
 				E
 			</Link>,
 			<span
 				key={`remove${row.id}`}
-				className="list action-cell"
+				className="action-cell"
 				onClick={() => removeAction(row.id)}
 			>
 				X
 			</span>
 		]
 		return (
-			<span className="list action-set" style={{
+			<span className="action-set" style={{
 				width: actionsTemplate.width
 			}
 			}>

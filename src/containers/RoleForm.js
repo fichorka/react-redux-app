@@ -34,19 +34,19 @@ class RoleForm extends Component {
 				}}
 			>
 				{({ isSubmitting }) => (
-					<Form>
-						<label htmlFor="name" className="form input-label">Role Name</label>
-						<Field type="text" name="name" size="15" className="form input" />
-						<ErrorMessage name="name" render={msg => <span className="form input-error">{msg}</span>} />
+					<Form className="form" >
+						<label htmlFor="name" className="input-label">Role Name</label>
+						<Field type="text" name="name" size="15" className="input" />
+						<ErrorMessage name="name" render={msg => <span className="input-error">{msg}</span>} />
 
 						<div>
-							<button type="submit" className="form button" disabled={isSubmitting}>
+							<button type="submit" className="button" disabled={isSubmitting}>
 								Add Role
           		</button>
-							<button type="reset" className="form button">Reset</button>
+							<button type="reset" className="button">Reset</button>
 							{
 								editItem ?
-									<button type="button" onClick={this.goBack} className="form button">Cancel</button> :
+									<button type="button" onClick={this.goBack} className="button">Cancel</button> :
 									null
 							}
 						</div>
