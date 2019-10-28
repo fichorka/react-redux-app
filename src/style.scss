@@ -173,7 +173,7 @@ body {
 	
 	.input:focus {
 		background: $color-theme-0;
-		outline: none;
+		outline: 0.2em solid $color-inverse-0;
 	}
 
   .input-label {
