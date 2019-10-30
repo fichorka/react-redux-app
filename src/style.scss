@@ -46,9 +46,7 @@ body {
   }
 
   .navbar {
-    display: inline-block;
-
-
+    display: block;
 
     a {
       font-weight: bold;
@@ -83,6 +81,7 @@ body {
 
   .option-bar {
     display: block;
+		letter-spacing: 0.05em;
 
     .option {
       display: block;
@@ -222,11 +221,11 @@ body {
 
   .action-cell:hover {
     background: $color-inverse-0;
-    color: $color-theme-0;
+    color: $color-theme-1;
 
     @at-root .dark & {
-      background: $color-inverse-0;
-      color: $color-inverse-0;
+      background: $color-theme-0;
+      color: $color-inverse-1;
     }
   }
 
@@ -268,12 +267,12 @@ body {
 
   .input:focus {
     background: $color-theme-0;
-    outline: 0.2em solid $color-inverse-0;
+    outline: 0.2em solid $color-inverse-1;
 
     @at-root .dark & {
       background: $color-inverse-0;
-      outline-color: $color-theme-0;
-      color: $color-theme-0
+      outline-color: $color-theme-1;
+      color: $color-theme-1
     }
   }
 
