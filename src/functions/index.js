@@ -7,7 +7,7 @@ export const generateListItems = (table, TEMPLATE, name, removeAction) => {
 	const listRows = []
 
 	if (!table.length) {
-		listRows.push(<span className="status">The list is empty</span>)
+		listRows.push(<span key={`${name}-status`} className="status">The list is empty</span>)
 	} else {
 
 		//list header:
