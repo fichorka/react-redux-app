@@ -3,16 +3,28 @@ $color-inverse-0: #000;
 $color-inverse-1: #111;
 $color-inverse-2: #222;
 $color-inverse-3: #333;
+$color-inverse-4: #444;
 $color-theme-0: #fff;
 $color-theme-1: #eee;
 $color-theme-2: #ddd;
 $color-theme-3: #ccc;
+$color-theme-4: #bbb;
 $color-warning: #b33;
+
+@function get-color($name, $lvl) {
+  @return $color-#{name}-lvl;
+}
 
 body {
   font: 16px "arial", sans-serif;
-  background: #bbb;
+  background: $color-theme-4;
+  color: $color-inverse-1;
   min-width: 250px;
+
+  &.dark {
+    background: $color-inverse-4;
+    color: $color-theme-1;
+  }
 }
 
 * {
@@ -25,27 +37,69 @@ body {
   padding: 0.5em 0;
 }
 
-/* Component: Navbar */
-.navbar {
-	display: block;
+/* Component: Header */
+.header {
   background: $color-theme-2;
-  a {
-    font-weight: bold;
-    text-align: center;
-    color: $color-inverse-1;
+
+  @at-root .dark & {
+    background: $color-inverse-2;
+  }
+
+  .navbar {
+    display: inline-block;
+
+
+
+    a {
+      font-weight: bold;
+      text-align: center;
+      color: $color-inverse-1;
+      display: block;
+      line-height: 3em;
+      text-decoration: none;
+      letter-spacing: 0.07em;
+
+      @at-root .dark & {
+        color: $color-theme-1;
+      }
+    }
+
+    a.active {
+      background: $color-theme-1;
+
+      @at-root .dark & {
+        background: $color-inverse-1;
+      }
+    }
+
+    a:hover {
+      background: $color-theme-0;
+
+      @at-root .dark & {
+        background: $color-inverse-0;
+      }
+    }
+  }
+
+  .option-bar {
     display: block;
-    line-height: 3em;
-    padding: 0 1em;
-    text-decoration: none;
-    letter-spacing: 0.07em;
-  }
 
-  a.active {
-    background: $color-theme-1
-  }
+    .option {
+      display: block;
+      text-align: center;
+			line-height: 3em;
+			cursor: pointer;
+			
+			&:hover {
+				background: $color-inverse-1;
+				color: $color-theme-1;
 
-  a:hover {
-    background: $color-theme-0;
+				@at-root .dark & {
+					background: $color-theme-1;
+					color: $color-inverse-1;
+				}
+			}
+    }
   }
 }
 
@@ -61,13 +115,21 @@ body {
 
   margin: 20px 10px;
   background: $color-theme-1;
-	border-radius: 5px;
-	
+  border-radius: 5px;
+
+  @at-root .dark & {
+    background: $color-inverse-1;
+  }
+
   .title {
     padding: 15px 20px;
-		font-size: 1.5em;
+    font-size: 1.5em;
     background: $color-theme-2;
     border-radius: 5px 5px 0 0;
+
+    @at-root .dark & {
+      background: $color-inverse-2;
+    }
   }
 
   .body {
@@ -78,86 +140,113 @@ body {
 /* Component: List */
 .list {
 
-	list-style-type: none;
-	margin-top: 25px;
-	padding: 0;
-	box-sizing: border-box;
+  list-style-type: none;
+  margin-top: 25px;
+  padding: 0;
+  box-sizing: border-box;
 
-	li {
-	  overflow: hidden;
-	  height: 2em;
-	  box-sizing: border-box;
-	}
+  li {
+    overflow: hidden;
+    height: 2em;
+    box-sizing: border-box;
+  }
 
-	.header {
-	  border-top-left-radius: 0.5em;
-	  border-top-right-radius: 0.5em;
-	  font-weight: bold;
-	  background: $color-inverse-1;
-	  color: $color-theme-1;
-	}
+  .header {
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+    font-weight: bold;
+    background: $color-inverse-1;
+    color: $color-theme-1;
 
-	.row:last-of-type {
-	  border-bottom-left-radius: 0.5em;
-	  border-bottom-right-radius: 0.5em;
-	}
+    @at-root .dark & {
+      background: $color-theme-1;
+      color: $color-inverse-1;
+    }
+  }
 
-	.row:nth-of-type(odd) {
-	  background: $color-theme-2;
-	}
 
-	.row:nth-of-type(even) {
-	  background: $color-theme-3;
-	}
+  .row:last-of-type {
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+  }
 
-	.data-cell {
-	  box-sizing: border-box;
-	  border-right: 0.1em solid $color-theme-0;
-	  overflow: hidden;
-	  text-overflow: ellipsis;
-	  white-space: nowrap;
-	  line-height: 1em;
-	  display: inline-block;
-	  padding: 0.5em 1em;
-	}
+  .row:nth-of-type(odd) {
+    background: $color-theme-2;
 
-	.action-set {
-	  box-sizing: border-box;
-	  text-overflow: ellipsis;
-	  white-space: nowrap;
-	  display: inline-block;
-	}
+    @at-root .dark & {
+      background: $color-inverse-2;
+    }
+  }
 
-	.action-cell {
-	  box-sizing: border-box;
-	  overflow: hidden;
-	  line-height: 1em;
-	  display: inline-block;
-	  padding: 0.5em;
-	  width: 50%;
-	  min-width: 1.5em;
-	  text-align: center;
-	  cursor: pointer;
-	}
+  .row:nth-of-type(even) {
+    background: $color-theme-3;
 
-	.action-cell:hover {
-	  background: $color-inverse-0;
-	  color: $color-theme-0;
-	}
+    @at-root .dark & {
+      background: $color-inverse-3;
+    }
+  }
 
-	.data-cell:last-of-type {
-	  border: none
-	}
+  .data-cell {
+    box-sizing: border-box;
+    border-right: 0.1em solid $color-theme-0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 1em;
+    display: inline-block;
+    padding: 0.5em 1em;
 
-	.status {
-	  display: block;
-		text-align: center;
-		letter-spacing: 0.05em;
-	  line-height: 2.5em;
-	  height: 2.5em;
-	  background: $color-theme-3;
-	  border-radius: 0.5em;
-	}
+    @at-root .dark & {
+      border-color: $color-inverse-0;
+    }
+  }
+
+  .action-set {
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+  }
+
+  .action-cell {
+    box-sizing: border-box;
+    overflow: hidden;
+    line-height: 1em;
+    display: inline-block;
+    padding: 0.5em;
+    width: 50%;
+    min-width: 1.5em;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .action-cell:hover {
+    background: $color-inverse-0;
+    color: $color-theme-0;
+
+    @at-root .dark & {
+      background: $color-inverse-0;
+      color: $color-inverse-0;
+    }
+  }
+
+  .data-cell:last-of-type {
+    border: none
+  }
+
+  .status {
+    display: block;
+    text-align: center;
+    letter-spacing: 0.05em;
+    line-height: 2.5em;
+    height: 2.5em;
+    background: $color-theme-3;
+    border-radius: 0.5em;
+
+    @at-root .dark & {
+      background: $color-inverse-3;
+    }
+  }
 }
 
 /* input elements */
@@ -165,16 +254,28 @@ body {
   .input {
     display: inline-block;
     font-size: 1em;
-		margin: 0.6em 0 1.5em;
-		border: none;
-		background: $color-theme-3;
-		padding: 0.2em 0.3em;
-	}
-	
-	.input:focus {
-		background: $color-theme-0;
-		outline: 0.2em solid $color-inverse-0;
-	}
+    margin: 0.6em 0 1.5em;
+    border: none;
+    background: $color-theme-3;
+    color: $color-inverse-1;
+    padding: 0.2em 0.3em;
+
+    @at-root .dark & {
+      background: $color-inverse-3;
+      color: $color-theme-1
+    }
+  }
+
+  .input:focus {
+    background: $color-theme-0;
+    outline: 0.2em solid $color-inverse-0;
+
+    @at-root .dark & {
+      background: $color-inverse-0;
+      outline-color: $color-theme-0;
+      color: $color-theme-0
+    }
+  }
 
   .input-label {
     display: block;
@@ -190,10 +291,19 @@ body {
     padding: 0.6em 0.75em;
     display: block;
     margin: 1em 1.5em 0 0;
+
+    @at-root .dark & {
+      background: $color-inverse-2;
+      color: $color-theme-1;
+    }
   }
 
   .button:hover {
-    background-color: $color-theme-0;
+    background: $color-theme-0;
+
+    @at-root .dark & {
+      background: $color-inverse-0;
+    }
   }
 
   .input-error {
@@ -205,12 +315,32 @@ body {
 
 /*media queries*/
 @media only screen and (min-width: 500px) {
-  .navbar a {
-    display: inline-block;
+  .header {
+    .navbar {
+			display: inline-block;
+			width: 70%;
+
+      a {
+        display: inline-block;
+        padding: 0 1em;
+      }
+    }
+
+    .option-bar {
+			display: inline-block;
+			width: 30%;
+			text-align: right;
+
+      .option {
+        display: inline-block;
+        padding: 0 1em;
+      }
+    }
   }
 
   .form .button {
     display: inline-block;
     margin-top: 0
   }
+
 }

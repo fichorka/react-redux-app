@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import Navbar from './components/Navbar';
+import Header from './components/Header';
 import Roles from './pages/Roles';
 import Employees from './pages/Employees';
 
@@ -10,7 +10,7 @@ class App extends Component {
 			<Fragment>
 				<Router>
 
-					<Navbar />
+					<Header />
 					<main className="container main">
 						<Switch>
 
