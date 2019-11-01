@@ -1,12 +1,14 @@
 import employees, * as fromEmployees from './employees'
 import roles, * as fromRoles from './roles'
+import sortState, * as fromSortState from './sortState'
 
 
 //root reducer
 export default (state = {}, action) => {
 	return {
 		employees: employees(state.employees, action),
-		roles: roles(state.roles, action)
+		roles: roles(state.roles, action),
+		sortState: sortState(state.sortState, action)
 	}
 }
 
@@ -34,3 +36,5 @@ export const getAllEmployees = state => {
 export const getAllRoles = state => {
 	return Object.values(state.roles)
 }
+
+export const selectSortState = state => fromSortState.selectSortState(state) || {}

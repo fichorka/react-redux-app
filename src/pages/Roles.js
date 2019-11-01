@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { Route, Switch } from 'react-router-dom'
-import { getAllRoles } from '../reducers';
-import { removeRole } from '../actions'
+import { getAllRoles } from '../reducers'
+import { removeRole, setSortState } from '../actions'
 import { TEMPLATES } from '../constants'
 import DataList from '../containers/DataList'
 import RoleForm from '../containers/RoleForm'
@@ -23,7 +23,7 @@ class Roles extends Component {
 					<Route exact path={`${match.path}/`} render={() => (
 						<LayoutGroup title="Roles">
 							<RoleForm key="add"/>
-							<DataList name="roles" selector={getAllRoles} actions={{ remove: removeRole }} TEMPLATE={TEMPLATES.roles} />
+							<DataList name="roles" selector={getAllRoles} actions={{ remove: removeRole, setSortState }} TEMPLATE={TEMPLATES.roles} />
 						</LayoutGroup>
 					)} />
 

@@ -2,7 +2,8 @@ function generateId() {
 	return '_' + Math.random().toString(36).substring(2, 10)
 }
 
-//action creators
+// action creators
+// roles
 export const addRole = (name) => (
 	{
 		type: 'ADD_ROLE',
@@ -26,6 +27,7 @@ export const removeRole = (id) => (
 	}
 )
 
+// employees
 export const addEmployee = (name, roles) => (
 	{
 		type: 'ADD_EMPLOYEE',
@@ -48,5 +50,20 @@ export const removeEmployee = (id) => (
 	{
 		type: "REMOVE_EMPLOYEE",
 		id: id
+	}
+)
+
+// sortState
+export const setSortState = (key, name)  => (
+	{
+		type: 'SET_SORT_STATE',
+		name,
+		key
+	}
+)
+
+export const resetSortState = ()  => (
+	{
+		type: 'RESET_SORT_STATE',
 	}
 )

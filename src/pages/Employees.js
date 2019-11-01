@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { getAllEmployees } from '../reducers';
-import { removeEmployee } from '../actions'
+import { removeEmployee, setSortState } from '../actions'
 import { TEMPLATES } from '../constants'
 import DataList from '../containers/DataList'
 import LayoutGroup from '../components/LayoutGroup'
@@ -23,7 +23,7 @@ class Employees extends Component {
 					<Route exact path={`${match.path}/`} render={() => (
 						<LayoutGroup title="Employees">
 							<EmployeeForm key="add"/>
-							<DataList name="employees" selector={getAllEmployees} actions={{ remove: removeEmployee }} TEMPLATE={TEMPLATES.employees} />
+							<DataList name="employees" selector={getAllEmployees} actions={{ remove: removeEmployee, setSortState }} TEMPLATE={TEMPLATES.employees} />
 						</LayoutGroup>
 					)} />
 
