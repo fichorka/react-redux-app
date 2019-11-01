@@ -4,10 +4,10 @@ $color-inverse-1: #111;
 $color-inverse-2: #222;
 $color-inverse-3: #333;
 $color-inverse-4: #444;
-$color-theme-0: #fff;
-$color-theme-1: #eee;
-$color-theme-2: #ddd;
-$color-theme-3: #ccc;
+$color-theme-0: #f2f2f2;
+$color-theme-1: #e5e5e5;
+$color-theme-2: #d8d8d8;
+$color-theme-3: #cbcbcb;
 $color-theme-4: #bbb;
 $color-warning: #b33;
 
@@ -284,7 +284,7 @@ body {
     outline: 0.2em solid $color-inverse-1;
 
     @at-root .dark & {
-      background: $color-inverse-0;
+      background: $color-inverse-4;
       outline-color: $color-theme-1;
       color: $color-theme-1
     }
@@ -315,7 +315,7 @@ body {
     background: $color-theme-0;
 
     @at-root .dark & {
-      background: $color-inverse-0;
+      background: $color-inverse-4;
     }
   }
 
