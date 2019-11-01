@@ -14,9 +14,9 @@ class Header extends Component {
 		return (
 			<header className="header">
 				<nav className="navbar">
-					<NavLink exact to="/" activeClassName="active" >Home</NavLink>
-					<NavLink to="/roles" activeClassName="active" >Roles</NavLink>
-					<NavLink to="/employees" activeClassName="active" >Employees</NavLink>
+					<NavLink exact to="/" className="nav-link" activeClassName="active" >Home</NavLink>
+					<NavLink to="/roles" className="nav-link" activeClassName="active" >Roles</NavLink>
+					<NavLink to="/employees" className="nav-link" activeClassName="active" >Employees</NavLink>
 				</nav>
 				<div className="option-bar">
 					<span className="option" onClick={this.handleThemeSwitch}>switch theme</span>
