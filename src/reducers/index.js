@@ -27,7 +27,7 @@ export const getAllEmployees = state => {
 	const result = [];
 	for (let key in state.employees) {
 		let employee = state.employees[key];
-		const roles = selectRole(state, employee.roles).name
+		const roles = selectRole(state, employee.roles).name || ''
 		result.push({ ...employee, roles });
 	}
 	return result
