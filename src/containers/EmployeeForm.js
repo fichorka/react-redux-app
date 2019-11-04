@@ -1,92 +1,93 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { addEmployee, updateEmployee } from '../actions'
 import { connect } from 'react-redux'
 import { generateOptionItems } from '../functions'
 import { getAllRoles } from '../reducers'
-import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { selectEmployee } from '../reducers/employees';
+import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { selectEmployee } from '../reducers/employees'
 
 class EmployeeForm extends Component {
-	constructor(props) {
-		super(props)
-		this.goBack = this.goBack.bind(this)
-	}
-	goBack() {
-		this.props.history.goBack()
-	}
+  constructor (props) {
+    super(props)
+    this.handleCancel = this.handleCancel.bind(this)
+  }
 
-	render() {
-		const { dispatch, roles, editItem, history } = this.props
-		const action = editItem ? updateEmployee : addEmployee
-		let initialValues = { name: editItem ? editItem.name : '', roles: editItem ? editItem.roles : '' }
-		return (
-			<Formik
-				initialValues={initialValues}
-				validate={values => {
-					let errors = {};
-					if (!values.name) {
-						errors.name = 'Required';
-					} if (values.roles === '') {
-						errors.roles = 'Required'
-					}
-					return errors;
-				}}
-				onSubmit={(values, { setSubmitting }) => {
-					editItem ? dispatch(action(editItem.id, values.name, values.roles)) : dispatch(action(values.name, values.roles))
-					values.name = ''
-					values.roles = ''
-					setSubmitting(false)
-					editItem ? history.push('/employees') : null
-				}}
-			>
-				{({ isSubmitting, values, handleChange, handleBlur }) => (
-					<Form className="form" >
+  handleCancel () {
+    this.props.history.goBack()
+  }
 
-						<label htmlFor="roles" className="input-label">Select Role</label>
-						<select
-							name="roles"
-							value={values.roles}
-							onChange={handleChange}
-							onBlur={handleBlur}
-							className="input"
-						>
-							<option value="">Select Role</option>
-							{generateOptionItems(roles)}
-						</select>
-						<ErrorMessage name="roles" render={msg => <span className="input-error">{msg}</span>} />
+  render () {
+    const { dispatch, roles, editItem, history } = this.props
+    const action = editItem ? updateEmployee : addEmployee
+    const initialValues = { name: editItem ? editItem.name : '', roles: editItem ? editItem.roles : '' }
+    return (
+      <Formik
+        initialValues={initialValues}
+        validate={values => {
+          const errors = {}
+          if (!values.name) {
+            errors.name = 'Required'
+          } if (values.roles === '') {
+            errors.roles = 'Required'
+          }
+          return errors
+        }}
+        onSubmit={(values, { setSubmitting }) => {
+          editItem ? dispatch(action(editItem.id, values.name, values.roles)) : dispatch(action(values.name, values.roles))
+          values.name = ''
+          values.roles = ''
+          setSubmitting(false)
+          if (editItem) history.push('/employees')
+        }}
+      >
+        {({ isSubmitting, values, handleChange, handleBlur }) => (
+          <Form className='form'>
 
-						<label htmlFor="name" className="input-label">Employee Name</label>
-						<Field type="text" name="name" size="20" className="input" />
-						<ErrorMessage name="name" render={msg => <span className="input-error">{msg}</span>} />
+            <label htmlFor='roles' className='input-label'>Select Role</label>
+            <select
+              name='roles'
+              value={values.roles}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              className='input'
+            >
+              <option value=''>Select Role</option>
+              {generateOptionItems(roles)}
+            </select>
+            <ErrorMessage name='roles' render={msg => <span className='input-error'>{msg}</span>} />
 
-						<div>
-							<button type="submit" className="button" disabled={isSubmitting}>
-								Add Employee
-          		</button>
-							<button type="reset" className="button">Reset</button>
-							{
-								editItem ?
-									<button type="button" onClick={this.goBack} className="button">Cancel</button> :
-									null
-							}
-						</div>
-					</Form>
-				)}
-			</Formik>
-		)
-	}
+            <label htmlFor='name' className='input-label'>Employee Name</label>
+            <Field type='text' name='name' size='20' className='input' />
+            <ErrorMessage name='name' render={msg => <span className='input-error'>{msg}</span>} />
+
+            <div>
+              <button type='submit' className='button' disabled={isSubmitting}>
+                Add Employee
+              </button>
+              <button type='reset' className='button'>Reset</button>
+              {
+                editItem
+                  ? <button type='button' onClick={this.handleCancel} className='button'>Cancel</button>
+                  : null
+              }
+            </div>
+          </Form>
+        )}
+      </Formik>
+    )
+  }
 }
 
 const mapStateToProps = (state, ownProps) => {
-	let editItem = null
-	if (ownProps.id) {
-		editItem = selectEmployee(state, ownProps.id)
-	}
-	return {
-		roles: getAllRoles(state),
-		editItem,
-		history: ownProps.history
-	}
+  let editItem = null
+  if (ownProps.id) {
+    editItem = selectEmployee(state, ownProps.id)
+  }
+  return {
+    roles: getAllRoles(state),
+    editItem,
+    history: ownProps.history
+  }
 }
 
 export default connect(mapStateToProps)(EmployeeForm)
