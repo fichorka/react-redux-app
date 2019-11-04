@@ -10,6 +10,7 @@ class EmployeeForm extends Component {
   constructor (props) {
     super(props)
     this.handleCancel = this.handleCancel.bind(this)
+    this.editItem = this.props.editItem
   }
 
   handleCancel () {
@@ -44,16 +45,14 @@ class EmployeeForm extends Component {
           <Form className='form'>
 
             <label htmlFor='roles' className='input-label'>Select Role</label>
-            <select
+            <Field
               name='roles'
-              value={values.roles}
-              onChange={handleChange}
-              onBlur={handleBlur}
+              as='select'
               className='input'
             >
               <option value=''>Select Role</option>
               {generateOptionItems(roles)}
-            </select>
+            </Field>
             <ErrorMessage name='roles' render={msg => <span className='input-error'>{msg}</span>} />
 
             <label htmlFor='name' className='input-label'>Employee Name</label>
@@ -62,7 +61,7 @@ class EmployeeForm extends Component {
 
             <div>
               <button type='submit' className='button' disabled={isSubmitting}>
-                Add Employee
+                {this.editItem ? 'Edit Employee' : 'Add Employee'}
               </button>
               <button type='reset' className='button'>Reset</button>
               {

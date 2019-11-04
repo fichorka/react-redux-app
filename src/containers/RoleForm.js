@@ -8,6 +8,7 @@ class RoleForm extends Component {
   constructor (props) {
     super(props)
     this.handleCancel = this.handleCancel.bind(this)
+    this.editItem = this.props.editItem
   }
 
   handleCancel () {
