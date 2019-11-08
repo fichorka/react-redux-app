@@ -4,7 +4,7 @@ class ListHeader extends Component {
   render () {
     const { TEMPLATE, name, setSortState, sortState } = this.props
     return (
-      <li key={`list-row-header-${name}`} className='header'>
+      <li key={`list-row-header-${name}`} className='row header'>
         {TEMPLATE.map(cellTemplate => {
           const key = cellTemplate.label.replace(/\s/g, '')
           return (

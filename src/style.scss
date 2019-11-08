@@ -11,15 +11,23 @@ $color-theme-3: #cbcbcb;
 $color-theme-4: #bbb;
 $color-warning: #b33;
 
+$light-color-1: #dfdfdf;
+$light-color-2: #bbb;
+$light-color-3: #8e8e8e;
+
+$dark-color-1: #111;
+$dark-color-2: #333;
+$dark-color-3: #7f7f7f;
+
 body {
   font: 16px "arial", sans-serif;
   background: $color-theme-4;
-  color: $color-inverse-1;
+  color: $dark-color-1;
   min-width: 250px;
 
   &.dark {
-    background: $color-inverse-4;
-    color: $color-theme-1;
+    background: $color-inverse-1;
+    color: $light-color-1;
   }
 }
 
@@ -47,14 +55,14 @@ body {
     .nav-link {
       font-weight: bold;
       text-align: center;
-      color: $color-inverse-1;
+      color: $dark-color-2;
       display: block;
       line-height: 3em;
       text-decoration: none;
       letter-spacing: 0.07em;
 
       @at-root .dark & {
-        color: $color-theme-1;
+        color: $light-color-2;
       }
 
       &.active {
@@ -67,10 +75,11 @@ body {
 
       &:hover {
         background: $color-theme-0;
+        color: $dark-color-1;
 
         @at-root .dark & {
           background: $color-inverse-4;
-          color: $color-theme-0;
+          color: $light-color-1;
         }
       }
     }
@@ -85,14 +94,19 @@ body {
       text-align: center;
       line-height: 3em;
       cursor: pointer;
+      color: $dark-color-2;
+
+      @at-root .dark & {
+        color: $light-color-2
+      }
 
       &:hover {
-        background: $color-inverse-1;
-        color: $color-theme-1;
+        background: $color-theme-0;
+        color: $dark-color-1;
 
         @at-root .dark & {
-          background: $color-theme-1;
-          color: $color-inverse-1;
+          background: $color-inverse-4;
+          color: $light-color-1;
         }
       }
     }
@@ -114,22 +128,24 @@ body {
   border-radius: 5px;
 
   @at-root .dark & {
-    background: $color-inverse-1;
+    background: $color-inverse-2;
   }
 
   .title {
     padding: 15px 20px;
     font-size: 1.5em;
-    background: $color-theme-2;
+    color: $dark-color-3;
+    // background: $color-theme-2;
     border-radius: 5px 5px 0 0;
 
     @at-root .dark & {
-      background: $color-inverse-2;
+      // background: $color-inverse-2;
+      color: $light-color-3;
     }
   }
 
   .body {
-    padding: 25px;
+    padding: 0 25px 25px;
   }
 }
 
@@ -148,20 +164,11 @@ body {
   }
 
   .header {
-    border-top-left-radius: 0.5em;
-    border-top-right-radius: 0.5em;
     font-weight: bold;
-    background: $color-theme-3;
-    color: $color-inverse-1;
     cursor: pointer;
 
-    @at-root .dark & {
-      background: $color-inverse-3;
-      color: $color-theme-1;
-    }
-
     & .data-cell:hover {
-      background: $color-theme-1;
+      background: $color-theme-2;
 
       @at-root .dark & {
         background: $color-inverse-4;
@@ -171,31 +178,20 @@ body {
   }
 
   .row {
-    &:last-of-type {
-      border-bottom-left-radius: 0.5em;
-      border-bottom-right-radius: 0.5em;
-    }
+    background: $color-theme-3;
+    color: $dark-color-1;
+    margin-bottom: 0.3em;
+    border-radius: 0.2em;
 
-    &:nth-of-type(odd) {
-      background: $color-theme-3;
-
-      @at-root .dark & {
-        background: $color-inverse-3;
-      }
-    }
-
-    &:nth-of-type(even) {
-      background: $color-theme-2;
-
-      @at-root .dark & {
-        background: $color-inverse-2;
-      }
+    .dark & {
+      background: $color-inverse-3;
+      color: $light-color-1
     }
   }
 
   .data-cell {
     box-sizing: border-box;
-    border-right: 0.1em solid $color-theme-0;
+    border-right: 0.2em solid $color-theme-1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -204,7 +200,7 @@ body {
     padding: 0.5em 1em;
 
     @at-root .dark & {
-      border-color: $color-inverse-0;
+      border-color: $color-inverse-2;
     }
   }
 
@@ -270,23 +266,24 @@ body {
     margin: 0.6em 0 1.5em;
     border: none;
     background: $color-theme-3;
-    color: $color-inverse-1;
+    color: $dark-color-2;
     padding: 0.2em 0.3em;
 
     @at-root .dark & {
       background: $color-inverse-3;
-      color: $color-theme-1
+      color: $light-color-2
     }
   }
 
   .input:focus {
     background: $color-theme-0;
-    outline: 0.2em solid $color-inverse-1;
+    outline: none;
+    color: $dark-color-1;
 
     @at-root .dark & {
       background: $color-inverse-4;
-      outline-color: $color-theme-1;
-      color: $color-theme-1
+      // outline-color: $color-theme-1;
+      color: $light-color-1
     }
   }
 
@@ -297,17 +294,17 @@ body {
 
   .button {
     border: none;
-    background: $color-theme-2;
+    background: $color-theme-3;
     font-size: 0.8em;
-    color: $color-inverse-1;
+    color: $dark-color-1;
     border-radius: 0.2em;
     padding: 0.6em 0.75em;
     display: block;
     margin: 1em 1.5em 0 0;
 
     @at-root .dark & {
-      background: $color-inverse-2;
-      color: $color-theme-1;
+      background: $color-inverse-3;
+      color: $light-color-1;
     }
   }
 
