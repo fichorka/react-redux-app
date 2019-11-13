@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "standard",
-    "start": "webpack-dev-server --open"
+    "start": "npm run dev",
+    "dev": "webpack-dev-server --env=dev", 
+    "build": "webpack --env=prod"
   },
   "keywords": [],
   "author": "",
