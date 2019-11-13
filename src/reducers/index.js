@@ -1,6 +1,6 @@
 import employees, * as fromEmployees from './employees'
 import roles, * as fromRoles from './roles'
-import sortState, * as fromSortState from './sortState'
+import sortState, * as fromSortState from './SortState'
 
 // root reducer
 export default (state = {}, action) => {
